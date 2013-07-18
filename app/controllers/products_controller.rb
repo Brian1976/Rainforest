@@ -1,44 +1,42 @@
 class ProductsController < ApplicationController
+  def index
+    @products = Product.all
+  end
 
-	def index
-	    #@products = products.all
-	end
+  def show
+    @product = Product.find(params[:id])
+  end
 
-	def show
-	    #@products = products.find(params[:id])
-	end
+  def new
+    @product = Product.new
+  end
 
-	def new
-		#@products = products.new
-	end
+  def edit
+    @product = Product.find(params[:id])
+  end
 
-  	def create
-  		# Make the variable @products a new products with the given params
-		# @products = products.new(params[:products])
-		# if @products.save
-	 #    	# if the save for the products was successful, go to index.html.erb
-	 #    	redirect_to productss_url
-		# else
-	 #    	# otherwise render the view associated with the action :new (i.e. new.html.erb)
-	 #    	render :new
-  # 		end
-	end
-	def edit
-  		#@products = products.find(params[:id])
-	end
+  def create
+    @product = Product.new(params[:product])
 
-	def update
-  		# @products = products.find(params[:id])
+    if @product.save
+      redirect_to products_url
+    else
+      render :new
+    end
+  end
 
-  		# if @products.update_attributes(params[:products])
-    # 		redirect_to "/productss/#{@products.id}"
-  		# else
-    # 		render :edit
-  		# end
-	end
-	def destroy
-	  # @products = products.find(params[:id])
-	  # @products.destroy
-	  # redirect_to productss_url
-	end		
+  def update
+    @product = Product.find(params[:id])
+
+    if @product.update_attributes(params[:product])
+      redirect_to product_path(@product)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+  end
 end
