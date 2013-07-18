@@ -1,4 +1,7 @@
 class ProductsController < ApplicationController
+	# use render :text => "Error found" and return to do printf-style debugging in your page (models are easy to debug from the console)
+	# Use sessions to store data between requests: session[:variable] = “data” 
+	# http://betterexplained.com/articles/intermediate-rails-understanding-models-views-and-controllers/
   # GET /products
   # GET /products.json
   def index
