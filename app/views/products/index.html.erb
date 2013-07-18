@@ -1,1 +1,7 @@
-<%= @product.formatted_price %>
+<h1>List of Products</h1>
+
+<% @products.each do |product| %>
+<p><b>Name:</b> <%= product[:name] %><br>
+<b>Description:</b> <%= product[:description] %><br>
+<b>Price:</b> $<%= product.formatted_price %></p>
+<% end %>
