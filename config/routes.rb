@@ -1,9 +1,13 @@
 Rainforest::Application.routes.draw do
+  #get "users/new"
+  #get "users/create--no-test-framework"
+
   # get "products/index"
   # get "products/show"
   # get "products/new"
   # get "products/edit"
   resources :products
+  resources :users, :only => [:new, :create]
 end
   # The priority is based upon order of creation:
   # first created -> highest priority.
